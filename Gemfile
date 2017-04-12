@@ -26,6 +26,8 @@ group :development do
   gem 'coveralls'
 
   gem 'shotgun'
+  gem 'pry'
+  gem 'pry-byebug'
 
   # gem 'guard'
   # gem 'guard-minitest'
