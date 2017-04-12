@@ -806,11 +806,6 @@ describe "Cron Job" do
       refute Sidekiq::Cron::Job.new(@args).should_enque? @time + 235
     end
 
-    it "should not enqueue jobs that are past" do
-      assert Sidekiq::Cron::Job.new(@args.merge(cron: "*/1 * * * *")).should_enque? @time
-      refute Sidekiq::Cron::Job.new(@args.merge(cron: "0 1,13 * * *")).should_enque? @time
-    end
-
     it 'doesnt skip enqueuing if job is resaved near next enqueue time' do
       job = Sidekiq::Cron::Job.new(@args)
       assert job.test_and_enque_for_time!(@time), "should enqueue"
